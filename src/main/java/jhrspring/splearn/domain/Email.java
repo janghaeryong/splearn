@@ -1,0 +1,14 @@
+package jhrspring.splearn.domain;
+
+import java.util.regex.Pattern;
+
+public record Email(String address) {
+    private static final Pattern EMAIL_PATTERN =
+            Pattern.compile("^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$");
+
+    public Email {
+        if(!EMAIL_PATTERN.matcher(address).matches()){
+            throw new IllegalArgumentException("이멩리 형식이 올바르지 않습니다 : " + address);
+        }
+    }
+}
