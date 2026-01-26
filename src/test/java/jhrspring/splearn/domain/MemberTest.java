@@ -5,7 +5,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -26,11 +25,11 @@ class MemberTest {
                 return encode(password).equals(passwordHash);
             }
         };
-        member = Member.create(new MemberCreateRequest("jhr@naver.com","jhr","secret"), passwordEncoder);
+        member = Member.register(new MemberRegisterRequest("jhr@naver.com","jhr","secret"), passwordEncoder);
     }
 
     @Test
-    void createMember() {
+    void registerMember() {
         assertThat(member.getStatus()).isEqualTo(MemberStatus.PENDING);
     }
 
@@ -108,10 +107,10 @@ class MemberTest {
     @Test
     void invalidEmail(){
         assertThatThrownBy(()->
-                Member.create(new MemberCreateRequest("invalid","jhr","secret"), passwordEncoder)
+                Member.register(new MemberRegisterRequest("invalid","jhr","secret"), passwordEncoder)
         ).isInstanceOf(IllegalArgumentException.class);
 
-        Member.create(new MemberCreateRequest("invalid@naver.com","jhr","secret"), passwordEncoder);
+        Member.register(new MemberRegisterRequest("invalid@naver.com","jhr","secret"), passwordEncoder);
     }
 
 }

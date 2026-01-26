@@ -8,7 +8,7 @@ public record Email(String address) {
 
     public Email {
         if(!EMAIL_PATTERN.matcher(address).matches()){
-            throw new IllegalArgumentException("이멩리 형식이 올바르지 않습니다 : " + address);
+            throw new IllegalArgumentException("이메일 형식이 올바르지 않습니다 : " + address);
         }
     }
 }
