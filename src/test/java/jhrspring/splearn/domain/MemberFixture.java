@@ -4,7 +4,7 @@ import org.springframework.lang.NonNull;
 
 public class MemberFixture {
     public static MemberRegisterRequest createMemberRegisterRequest(String email) {
-        return new MemberRegisterRequest(email, "jhr", "secret");
+        return new MemberRegisterRequest(email, "Charlie", "verysecret");
     }
 
     public static MemberRegisterRequest createMemberRegisterRequest() {
