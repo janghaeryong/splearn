@@ -8,9 +8,6 @@ import org.springframework.context.annotation.Bean;
 
 @TestConfiguration
 public class SplearnTestConfiguration {
-
-
-
     @Bean
     public PasswordEncoder passwordEncoder() {
         return MemberFixture.createPasswordEncoder();

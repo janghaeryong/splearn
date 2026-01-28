@@ -1,10 +1,10 @@
 package jhrspring.splearn.application.provided;
 
+import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 import jakarta.validation.ConstraintViolationException;
 import jhrspring.splearn.SplearnTestConfiguration;
 import jhrspring.splearn.domain.*;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
@@ -16,7 +16,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 @Transactional
 @Import(SplearnTestConfiguration.class)
 public record MemberRegisterTest(
-    MemberRegister memberRegister
+    MemberRegister memberRegister,
+    EntityManager entityManager
 ) {
     //안티 패턴 이지만 테스트에서는 사용함
     @Test
@@ -34,6 +35,21 @@ public record MemberRegisterTest(
         assertThatThrownBy(()-> memberRegister.register(MemberFixture.createMemberRegisterRequest()))
                 .isInstanceOf(DuplicateEmailException.class);
     }
+
+    @Test
+    void activate(){
+        Member member = memberRegister.register(MemberFixture.createMemberRegisterRequest());
+        entityManager.flush();
+        entityManager.clear();
+
+        member = memberRegister.activate(member.getId());
+
+        entityManager.flush();
+
+        assertThat(member.getStatus()).isEqualTo(MemberStatus.ACTIVE);
+
+    }
+
     @Test
     void memberRegisterRequestFail(){
         extracted(new MemberRegisterRequest("jhr@naver.com", "jhr", "longsecret"));
