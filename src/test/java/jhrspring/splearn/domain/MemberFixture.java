@@ -1,7 +1,5 @@
 package jhrspring.splearn.domain;
 
-import org.springframework.lang.NonNull;
-
 public class MemberFixture {
     public static MemberRegisterRequest createMemberRegisterRequest(String email) {
         return new MemberRegisterRequest(email, "Charlie", "verysecret");

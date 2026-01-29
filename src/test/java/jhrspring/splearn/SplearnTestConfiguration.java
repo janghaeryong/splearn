@@ -1,6 +1,5 @@
 package jhrspring.splearn;
 
-import jhrspring.splearn.application.required.EmailSender;
 import jhrspring.splearn.domain.MemberFixture;
 import jhrspring.splearn.domain.PasswordEncoder;
 import org.springframework.boot.test.context.TestConfiguration;
