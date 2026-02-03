@@ -25,7 +25,6 @@ public class MemberModifyService implements MemberRegister {
     @Override
     public Member register(MemberRegisterRequest registerRequest) {
         // check
-
         checkDuplicateEmail(registerRequest);
         // domain model
         Member member = Member.register(registerRequest, passwordEncoder);
