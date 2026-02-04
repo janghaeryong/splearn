@@ -20,7 +20,6 @@ import static java.util.Objects.requireNonNull;
 @Getter
 @ToString(callSuper = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@NaturalIdCache
 public class Member extends AbstractEntity {
 
     @NaturalId
@@ -31,6 +30,8 @@ public class Member extends AbstractEntity {
     private String passwordHash;
 
     private MemberStatus status;
+
+    private MemberDetail detail;
 
     public static Member register(MemberRegisterRequest registerRequest, PasswordEncoder passwordEncoder){
         Member member = new Member();

@@ -37,6 +37,31 @@
         </attributes>
     </entity>
 
+    <entity class="jhrspring.splearn.domain.MemberDetail">
+        <table name="member_detail">
+            <unique-constraint name="UK_MEMBER_DETAIL_MEMBER_ID">
+                <column-name>member_id</column-name>
+            </unique-constraint>
+        </table>
+        <attributes>
+            <basic name="profile">
+                <column name="profile" length="255"/>
+            </basic>
+            <basic name="introduction">
+                <column name="introduction" length="255"/>
+            </basic>
+            <basic name="registeredAt">
+                <column name="registered_at" length="255"/>
+            </basic>
+            <basic name="activatedAt">
+                <column name="activated_at" length="255"/>
+            </basic>
+            <basic name="deactivatedAt">
+                <column name="deactivated_at" length="255"/>
+            </basic>
+        </attributes>
+    </entity>
+
     <embeddable class="jhrspring.splearn.domain.Email">
         <attributes>
             <basic name="address">
