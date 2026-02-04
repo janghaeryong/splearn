@@ -12,6 +12,8 @@ import lombok.ToString;
 import org.hibernate.annotations.NaturalId;
 import org.springframework.util.Assert;
 
+import java.util.Objects;
+
 import static java.util.Objects.requireNonNull;
 
 /**
@@ -19,7 +21,7 @@ import static java.util.Objects.requireNonNull;
  */
 @Entity
 @Getter
-@ToString(callSuper = true)
+@ToString(callSuper = true, exclude = "detail")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member extends AbstractEntity {
 
@@ -32,7 +34,7 @@ public class Member extends AbstractEntity {
 
     private MemberStatus status;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private MemberDetail detail;
 
     public static Member register(MemberRegisterRequest registerRequest, PasswordEncoder passwordEncoder){
@@ -43,6 +45,9 @@ public class Member extends AbstractEntity {
         member.passwordHash = requireNonNull(passwordEncoder.encode(registerRequest.password()));
 
         member.status = MemberStatus.PENDING;
+
+        member.detail = MemberDetail.create();
+
         return member;
     }
 
@@ -50,12 +55,16 @@ public class Member extends AbstractEntity {
         Assert.state(status == MemberStatus.PENDING, "PENDING 상태가 아닙니다.");
 
         this.status = MemberStatus.ACTIVE;
+
+        this.detail.activate();
     }
 
     public void deactivate() {
         Assert.state(status == MemberStatus.ACTIVE, "ACTIVE 상태가 아닙니다.");
 
         this.status = MemberStatus.DEACTIVATE;
+
+        this.detail.deactivate();
     }
 
     public boolean verifyPassword(String secret, PasswordEncoder passwordEncoder) {
@@ -64,6 +73,11 @@ public class Member extends AbstractEntity {
 
     public void changeNickName(String nickname) {
         this.nickname = requireNonNull(nickname);
+    }
+
+    public void updateInfo(MemberInfoUpdateRequest updateRequest){
+        this.nickname = Objects.requireNonNull(updateRequest.nickname());
+        this.detail.updateInfo(updateRequest);
     }
 
     public void changePassword(String password, PasswordEncoder passwordEncoder) {

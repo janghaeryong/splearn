@@ -4,6 +4,7 @@ package jhrspring.splearn.application.member.required;
 import jakarta.persistence.EntityManager;
 import jhrspring.splearn.domain.member.Member;
 import jhrspring.splearn.domain.member.MemberFixture;
+import jhrspring.splearn.domain.member.MemberStatus;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -31,6 +32,12 @@ class MemberRepositoryTest {
         assertThat(member.getId()).isNotNull();
 
         entityManager.flush();
+        entityManager.clear();
+
+        var found = memberRepository.findById(member.getId()).orElseThrow();
+        assertThat(found.getStatus()).isEqualTo(MemberStatus.PENDING);
+        assertThat(found.getDetail().getRegisteredAt()).isNotNull();
+
     }
 
     @Test
