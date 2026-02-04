@@ -1,10 +1,10 @@
-package jhrspring.splearn.application.provided;
+package jhrspring.splearn.application.member.provided;
 
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 import jhrspring.splearn.SplearnTestConfiguration;
-import jhrspring.splearn.domain.Member;
-import jhrspring.splearn.domain.MemberFixture;
+import jhrspring.splearn.domain.member.Member;
+import jhrspring.splearn.domain.member.MemberFixture;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;

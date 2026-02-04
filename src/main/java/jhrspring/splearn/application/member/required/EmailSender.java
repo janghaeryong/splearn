@@ -1,6 +1,6 @@
-package jhrspring.splearn.application.required;
+package jhrspring.splearn.application.member.required;
 
-import jhrspring.splearn.domain.Email;
+import jhrspring.splearn.domain.shared.Email;
 
 /**
  * 이메일을 발송한다.

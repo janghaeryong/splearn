@@ -15,7 +15,7 @@
         </attributes>
     </mapped-superclass>
 
-    <entity class="jhrspring.splearn.domain.Member">
+    <entity class="jhrspring.splearn.domain.member.Member">
         <table name="member">
             <unique-constraint name="UK_MEMBER_EMAIL_ADDRESS">
                 <column-name>email_address</column-name>
@@ -37,7 +37,7 @@
         </attributes>
     </entity>
 
-    <entity class="jhrspring.splearn.domain.MemberDetail">
+    <entity class="jhrspring.splearn.domain.member.MemberDetail">
         <table name="member_detail">
             <unique-constraint name="UK_MEMBER_DETAIL_MEMBER_ID">
                 <column-name>member_id</column-name>
@@ -62,7 +62,7 @@
         </attributes>
     </entity>
 
-    <embeddable class="jhrspring.splearn.domain.Email">
+    <embeddable class="jhrspring.splearn.domain.shared.Email">
         <attributes>
             <basic name="address">
                 <column name="email_address" nullable="false" length="150"/>

@@ -1,7 +1,7 @@
-package jhrspring.splearn.application.required;
+package jhrspring.splearn.application.member.required;
 
-import jhrspring.splearn.domain.Email;
-import jhrspring.splearn.domain.Member;
+import jhrspring.splearn.domain.shared.Email;
+import jhrspring.splearn.domain.member.Member;
 import org.springframework.data.repository.Repository;
 
 import java.util.Optional;

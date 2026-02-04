@@ -1,6 +1,7 @@
-package jhrspring.splearn.domain;
+package jhrspring.splearn.domain.member;
 
 import jakarta.persistence.Entity;
+import jhrspring.splearn.domain.AbstractEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -11,7 +12,7 @@ import java.time.LocalDateTime;
 @Getter
 @ToString(callSuper = true)
 @NoArgsConstructor(access = lombok.AccessLevel.PROTECTED)
-public class MemberDetail extends AbstractEntity{
+public class MemberDetail extends AbstractEntity {
     private String profile;
     private String introduction;
     private LocalDateTime registeredAt;

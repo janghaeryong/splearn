@@ -1,7 +1,7 @@
 package jhrspring.splearn;
 
-import jhrspring.splearn.domain.MemberFixture;
-import jhrspring.splearn.domain.PasswordEncoder;
+import jhrspring.splearn.domain.member.MemberFixture;
+import jhrspring.splearn.domain.member.PasswordEncoder;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 

@@ -1,8 +1,8 @@
-package jhrspring.splearn.application.provided;
+package jhrspring.splearn.application.member.provided;
 
 import jakarta.validation.Valid;
-import jhrspring.splearn.domain.Member;
-import jhrspring.splearn.domain.MemberRegisterRequest;
+import jhrspring.splearn.domain.member.Member;
+import jhrspring.splearn.domain.member.MemberRegisterRequest;
 
 /**
  * 회원의 등록과 관련된 기능을 제공한다.

@@ -1,12 +1,12 @@
-package jhrspring.splearn.domain;
+package jhrspring.splearn.domain.member;
 
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static jhrspring.splearn.domain.MemberFixture.createMemberRegisterRequest;
-import static jhrspring.splearn.domain.MemberFixture.createPasswordEncoder;
+import static jhrspring.splearn.domain.member.MemberFixture.createMemberRegisterRequest;
+import static jhrspring.splearn.domain.member.MemberFixture.createPasswordEncoder;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 

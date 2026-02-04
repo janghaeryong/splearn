@@ -1,9 +1,9 @@
-package jhrspring.splearn.application.required;
+package jhrspring.splearn.application.member.required;
 
 
 import jakarta.persistence.EntityManager;
-import jhrspring.splearn.domain.Member;
-import jhrspring.splearn.domain.MemberFixture;
+import jhrspring.splearn.domain.member.Member;
+import jhrspring.splearn.domain.member.MemberFixture;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;

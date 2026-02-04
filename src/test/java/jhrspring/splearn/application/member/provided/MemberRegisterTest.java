@@ -1,10 +1,10 @@
-package jhrspring.splearn.application.provided;
+package jhrspring.splearn.application.member.provided;
 
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 import jakarta.validation.ConstraintViolationException;
 import jhrspring.splearn.SplearnTestConfiguration;
-import jhrspring.splearn.domain.*;
+import jhrspring.splearn.domain.member.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;

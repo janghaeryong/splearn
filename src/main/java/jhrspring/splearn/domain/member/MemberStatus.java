@@ -1,4 +1,4 @@
-package jhrspring.splearn.domain;
+package jhrspring.splearn.domain.member;
 
 public enum MemberStatus {
     PENDING, ACTIVE, DEACTIVATE

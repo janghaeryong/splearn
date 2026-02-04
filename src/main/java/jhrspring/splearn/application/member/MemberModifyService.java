@@ -1,11 +1,15 @@
-package jhrspring.splearn.application;
+package jhrspring.splearn.application.member;
 
 import jakarta.transaction.Transactional;
-import jhrspring.splearn.application.provided.MemberFinder;
-import jhrspring.splearn.application.provided.MemberRegister;
-import jhrspring.splearn.application.required.EmailSender;
-import jhrspring.splearn.application.required.MemberRepository;
-import jhrspring.splearn.domain.*;
+import jhrspring.splearn.application.member.provided.MemberFinder;
+import jhrspring.splearn.application.member.provided.MemberRegister;
+import jhrspring.splearn.application.member.required.EmailSender;
+import jhrspring.splearn.application.member.required.MemberRepository;
+import jhrspring.splearn.domain.member.DuplicateEmailException;
+import jhrspring.splearn.domain.member.Member;
+import jhrspring.splearn.domain.member.MemberRegisterRequest;
+import jhrspring.splearn.domain.member.PasswordEncoder;
+import jhrspring.splearn.domain.shared.Email;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;

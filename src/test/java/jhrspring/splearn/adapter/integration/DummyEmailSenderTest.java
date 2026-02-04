@@ -1,12 +1,11 @@
 package jhrspring.splearn.adapter.integration;
 
-import jhrspring.splearn.domain.Email;
+import jhrspring.splearn.domain.shared.Email;
 import org.junit.jupiter.api.Test;
 import org.junitpioneer.jupiter.StdIo;
 import org.junitpioneer.jupiter.StdOut;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class DummyEmailSenderTest {
     @Test

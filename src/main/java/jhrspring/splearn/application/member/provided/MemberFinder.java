@@ -1,6 +1,6 @@
-package jhrspring.splearn.application.provided;
+package jhrspring.splearn.application.member.provided;
 
-import jhrspring.splearn.domain.Member;
+import jhrspring.splearn.domain.member.Member;
 
 /**
  * 회원을 조회 한다.
