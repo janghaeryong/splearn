@@ -1,6 +1,5 @@
 package jhrspring.splearn.domain.member;
 
-import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jhrspring.splearn.domain.AbstractEntity;
 import lombok.Getter;
@@ -16,16 +15,11 @@ import java.util.Objects;
 @ToString(callSuper = true)
 @NoArgsConstructor(access = lombok.AccessLevel.PROTECTED)
 public class MemberDetail extends AbstractEntity {
-    @Embedded
-    private Profile profile;
-
-    private String introduction;
-
-    private LocalDateTime registeredAt;
-
-    private LocalDateTime activatedAt;
-
-    private LocalDateTime deactivatedAt;
+    Profile profile;
+    String introduction;
+    LocalDateTime registeredAt;
+    LocalDateTime activatedAt;
+    LocalDateTime deactivatedAt;
 
     static MemberDetail create() {
         MemberDetail memberDetail = new MemberDetail();
@@ -50,4 +44,3 @@ public class MemberDetail extends AbstractEntity {
         this.introduction = Objects.requireNonNull(updateRequest.introduction());
     }
 }
-

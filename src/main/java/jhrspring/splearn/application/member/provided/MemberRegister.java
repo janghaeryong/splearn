@@ -2,6 +2,7 @@ package jhrspring.splearn.application.member.provided;
 
 import jakarta.validation.Valid;
 import jhrspring.splearn.domain.member.Member;
+import jhrspring.splearn.domain.member.MemberInfoUpdateRequest;
 import jhrspring.splearn.domain.member.MemberRegisterRequest;
 
 /**
@@ -9,5 +10,10 @@ import jhrspring.splearn.domain.member.MemberRegisterRequest;
  */
 public interface MemberRegister {
     Member register(@Valid MemberRegisterRequest registerRequest);
+
     Member activate(Long memberId);
+
+    Member deactivate(Long MemberId);
+
+    Member updateInfo(Long MemberId, @Valid MemberInfoUpdateRequest memberInfoUpdateRequest);
 }
