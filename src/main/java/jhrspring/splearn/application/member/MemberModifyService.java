@@ -46,8 +46,8 @@ public class MemberModifyService implements MemberRegister {
     }
 
     @Override
-    public Member deactivate(Long MemberId) {
-        Member member = memberFinder.find(MemberId);
+    public Member deactivate(Long memberId) {
+        Member member = memberFinder.find(memberId);
 
         member.deactivate();
 
@@ -55,12 +55,25 @@ public class MemberModifyService implements MemberRegister {
     }
 
     @Override
-    public Member updateInfo(Long MemberId, MemberInfoUpdateRequest memberInfoUpdateRequest) {
-        Member member = memberFinder.find(MemberId);
-
+    public Member updateInfo(Long memberId, MemberInfoUpdateRequest memberInfoUpdateRequest) {
+        Member member = memberFinder.find(memberId);
+        
+        checkDuplicateProfile(member, memberInfoUpdateRequest.profileAddress());
+        
         member.updateInfo(memberInfoUpdateRequest);
 
         return memberRepository.save(member);
+    }
+
+    private void checkDuplicateProfile(Member member, String profileAddress) {
+        if(profileAddress.isEmpty()) return;
+
+        Profile currentProfile = member.getDetail().getProfile();
+        if(currentProfile != null && currentProfile.address().equals(profileAddress)) return;
+
+        if(memberRepository.findByProfile(new Profile(profileAddress)).isPresent()){
+            throw new DuplicateProfileException("이미 존재하는 프로필 주소 입니다.");
+        }
     }
 
     private void sendWelcomeEmail(Member member) {
@@ -69,7 +82,7 @@ public class MemberModifyService implements MemberRegister {
 
     private void checkDuplicateEmail(MemberRegisterRequest registerRequest) {
         if(memberRepository.findByEmail(new Email(registerRequest.email())).isPresent()){
-            throw new DuplicateEmailException("이미 사용중인 이메일 이니다" + registerRequest.email());
-        };
+            throw new DuplicateEmailException("이미 사용중인 이메일 입니다. : " + registerRequest.email());
+        }
     }
 }
