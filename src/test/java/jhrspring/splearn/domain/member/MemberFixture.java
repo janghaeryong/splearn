@@ -1,5 +1,7 @@
 package jhrspring.splearn.domain.member;
 
+import org.springframework.test.util.ReflectionTestUtils;
+
 public class MemberFixture {
     public static MemberRegisterRequest createMemberRegisterRequest(String email) {
         return new MemberRegisterRequest(email, "Charlie", "verysecret");
@@ -21,5 +23,13 @@ public class MemberFixture {
                 return encode(password).equals(passwordHash);
             }
         };
+    }
+    public static Member createMember() {
+        return Member.register(createMemberRegisterRequest(), createPasswordEncoder());
+    }
+    public static Member createMember(Long memberId) {
+        Member member = Member.register(createMemberRegisterRequest(), createPasswordEncoder());
+        ReflectionTestUtils.setField(member, "id", memberId);
+        return member;
     }
 }
