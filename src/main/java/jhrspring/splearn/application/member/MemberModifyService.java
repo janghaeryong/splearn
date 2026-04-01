@@ -1,6 +1,7 @@
 package jhrspring.splearn.application.member;
 
 import jakarta.transaction.Transactional;
+import jhrspring.splearn.adapter.security.SecurePasswordEncoder;
 import jhrspring.splearn.application.member.provided.MemberFinder;
 import jhrspring.splearn.application.member.provided.MemberRegister;
 import jhrspring.splearn.application.member.required.EmailSender;
@@ -33,6 +34,7 @@ public class MemberModifyService implements MemberRegister {
         memberRepository.save(member);
         // post process
         sendWelcomeEmail(member);
+
         return member;
     }
 
